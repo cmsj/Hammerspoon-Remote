@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController <MCBrowserViewControllerDelegate>
+@property (strong, nonatomic) AppDelegate *appDelegate;
 
+- (IBAction)searchForPlayers:(id)sender;
 
 @end
 

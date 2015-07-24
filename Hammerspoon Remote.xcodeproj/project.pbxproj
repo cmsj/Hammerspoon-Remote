@@ -15,6 +15,7 @@
 		4F9204711B6180B7002FBC48 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9204701B6180B7002FBC48 /* Images.xcassets */; };
 		4F9204741B6180B7002FBC48 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9204721B6180B7002FBC48 /* LaunchScreen.xib */; };
 		4F9204801B6180B8002FBC48 /* Hammerspoon_RemoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92047F1B6180B8002FBC48 /* Hammerspoon_RemoteTests.m */; };
+		4F92048E1B61810D002FBC48 /* HSRemoteHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92048D1B61810D002FBC48 /* HSRemoteHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		4F9204791B6180B8002FBC48 /* Hammerspoon RemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hammerspoon RemoteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F92047E1B6180B8002FBC48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F92047F1B6180B8002FBC48 /* Hammerspoon_RemoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hammerspoon_RemoteTests.m; sourceTree = "<group>"; };
+		4F92048C1B61810D002FBC48 /* HSRemoteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSRemoteHandler.h; sourceTree = "<group>"; };
+		4F92048D1B61810D002FBC48 /* HSRemoteHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSRemoteHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				4F9204701B6180B7002FBC48 /* Images.xcassets */,
 				4F9204721B6180B7002FBC48 /* LaunchScreen.xib */,
 				4F9204601B6180B7002FBC48 /* Supporting Files */,
+				4F92048C1B61810D002FBC48 /* HSRemoteHandler.h */,
+				4F92048D1B61810D002FBC48 /* HSRemoteHandler.m */,
 			);
 			path = "Hammerspoon Remote";
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F92046C1B6180B7002FBC48 /* SecondViewController.m in Sources */,
+				4F92048E1B61810D002FBC48 /* HSRemoteHandler.m in Sources */,
 				4F9204661B6180B7002FBC48 /* AppDelegate.m in Sources */,
 				4F9204691B6180B7002FBC48 /* FirstViewController.m in Sources */,
 				4F9204631B6180B7002FBC48 /* main.m in Sources */,
