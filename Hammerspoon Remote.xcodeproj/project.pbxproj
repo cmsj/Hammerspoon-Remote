@@ -16,6 +16,7 @@
 		4F9204741B6180B7002FBC48 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9204721B6180B7002FBC48 /* LaunchScreen.xib */; };
 		4F9204801B6180B8002FBC48 /* Hammerspoon_RemoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92047F1B6180B8002FBC48 /* Hammerspoon_RemoteTests.m */; };
 		4F92048E1B61810D002FBC48 /* HSRemoteHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92048D1B61810D002FBC48 /* HSRemoteHandler.m */; };
+		4FBE04B41B680E64003A610A /* MYAnonymousIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE04B31B680E64003A610A /* MYAnonymousIdentity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,9 @@
 		4F92047F1B6180B8002FBC48 /* Hammerspoon_RemoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hammerspoon_RemoteTests.m; sourceTree = "<group>"; };
 		4F92048C1B61810D002FBC48 /* HSRemoteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSRemoteHandler.h; sourceTree = "<group>"; };
 		4F92048D1B61810D002FBC48 /* HSRemoteHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSRemoteHandler.m; sourceTree = "<group>"; };
+		4FBE04B11B680E64003A610A /* HammerspoonRemoteCertTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerspoonRemoteCertTemplate.h; sourceTree = "<group>"; };
+		4FBE04B21B680E64003A610A /* MYAnonymousIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYAnonymousIdentity.h; sourceTree = "<group>"; };
+		4FBE04B31B680E64003A610A /* MYAnonymousIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYAnonymousIdentity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,9 @@
 		4F92045F1B6180B7002FBC48 /* Hammerspoon Remote */ = {
 			isa = PBXGroup;
 			children = (
+				4FBE04B11B680E64003A610A /* HammerspoonRemoteCertTemplate.h */,
+				4FBE04B21B680E64003A610A /* MYAnonymousIdentity.h */,
+				4FBE04B31B680E64003A610A /* MYAnonymousIdentity.m */,
 				4F9204641B6180B7002FBC48 /* AppDelegate.h */,
 				4F9204651B6180B7002FBC48 /* AppDelegate.m */,
 				4F9204671B6180B7002FBC48 /* FirstViewController.h */,
@@ -234,6 +241,7 @@
 				4F9204661B6180B7002FBC48 /* AppDelegate.m in Sources */,
 				4F9204691B6180B7002FBC48 /* FirstViewController.m in Sources */,
 				4F9204631B6180B7002FBC48 /* main.m in Sources */,
+				4FBE04B41B680E64003A610A /* MYAnonymousIdentity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +438,7 @@
 				4F9204851B6180B8002FBC48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F9204861B6180B8002FBC48 /* Build configuration list for PBXNativeTarget "Hammerspoon RemoteTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +447,7 @@
 				4F9204881B6180B8002FBC48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,25 +8,41 @@
 
 #import "HSRemoteHandler.h"
 
-NSString *SecIdentityRefFingerprint(SecIdentityRef identityRef) {
-    NSMutableString *output;
-    SecCertificateRef certRef;
-    
-    SecIdentityCopyCertificate(identityRef, &certRef);
+NSString *SecCertificateRefFingerprint(SecCertificateRef certRef) {
+    NSMutableString *output = [[NSMutableString alloc] init];
     CFDataRef data = SecCertificateCopyData(certRef);
     
-    unsigned char sha1[CC_SHA1_DIGEST_LENGTH+1];
-    CC_SHA1(CFDataGetBytePtr(data), (CC_LONG)CFDataGetLength(data), sha1);
-    sha1[CC_SHA1_DIGEST_LENGTH] = 0;
-    
-    for (unsigned int i = 0; i < (unsigned int)CFDataGetLength(data); i++) {
-        [output appendFormat:@"%02x", sha1[i]];
+    if (!data) {
+        NSLog(@"ERROR: Unable to get certificate data to fingerprint");
+        return nil;
     }
     
-    CFRelease(certRef);
-    CFRelease(data);
+    unsigned char md5[CC_MD5_DIGEST_LENGTH+1];
+    CC_MD5(CFDataGetBytePtr(data), (CC_LONG)CFDataGetLength(data), md5);
+    md5[CC_MD5_DIGEST_LENGTH] = 0;
     
+    for (unsigned int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", md5[i]];
+    }
+    
+    CFRelease(data);
     return (NSString *)output;
+}
+
+NSString *SecIdentityRefFingerprint(SecIdentityRef identityRef) {
+    NSString *output;
+    SecCertificateRef certRef = nil;
+    
+    SecIdentityCopyCertificate(identityRef, &certRef);
+    if (!certRef) {
+        NSLog(@"ERROR: Unable to find certificate to get fingerprint");
+        return nil;
+    }
+    
+    output = SecCertificateRefFingerprint(certRef);
+    CFRelease(certRef);
+    
+    return output;
 }
 
 @implementation HSRemoteHandler
@@ -34,11 +50,23 @@ NSString *SecIdentityRefFingerprint(SecIdentityRef identityRef) {
 - (void)setupPeerWithDisplayName:(NSString *)displayName {
     NSLog(@"setupPeerWithDisplayName: %@", displayName);
     self.peerID = [[MCPeerID alloc] initWithDisplayName:displayName];
+    if (!self.peerID) {
+        NSLog(@"ERROR: peerID is null");
+        return;
+    }
+    NSError *certError;
+    peerIdentity = MYGetOrCreateAnonymousIdentity([NSString stringWithFormat:@"Hammerspoon Remote: %@", displayName], 20 * kMYAnonymousIdentityDefaultExpirationInterval, &certError);
+    if (!peerIdentity) {
+        NSLog(@"ERROR: Unable to find/generate a certificate: %@", certError);
+        return;
+    }
+    self.certMD5 = SecIdentityRefFingerprint(peerIdentity);
+    NSLog(@"Generated/found my cert with fingerprint: %@", self.certMD5);
 }
 
 - (void)setupSession {
     NSLog(@"setupSession");
-    self.session = [[MCSession alloc] initWithPeer:self.peerID securityIdentity:nil encryptionPreference:MCEncryptionRequired];
+    self.session = [[MCSession alloc] initWithPeer:self.peerID securityIdentity:@[(__bridge id)peerIdentity] encryptionPreference:MCEncryptionRequired];
     self.session.delegate = self;
 }
 
@@ -63,7 +91,7 @@ NSString *SecIdentityRefFingerprint(SecIdentityRef identityRef) {
 }
 
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state {
-    NSLog(@"didChangeState: %li", (long)state);
+    NSLog(@"didChangeState: %li (%@)", (long)state, peerID.displayName);
 }
 
 - (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID {
@@ -90,11 +118,19 @@ NSString *SecIdentityRefFingerprint(SecIdentityRef identityRef) {
         return;
     }
     
-    SecIdentityRef identityRef = (__bridge SecIdentityRef)[certificate objectAtIndex:0];
+    SecCertificateRef certRef = (__bridge SecCertificateRef)[certificate objectAtIndex:0];
+    NSString *certMD5 = SecCertificateRefFingerprint(certRef);
     
-    NSLog(@"Found a SHA1 of: %@", SecIdentityRefFingerprint(identityRef));
+    NSLog(@"Found a SHA1 of: %@", certMD5);
 
-    certificateHandler(YES);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Pairing attempt" message:[NSString stringWithFormat:@"Please check that the certificate fingerprints are the same on both devices:\n%@\n%@", certMD5, self.certMD5] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *pairAction = [UIAlertAction actionWithTitle:@"Pair" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {certificateHandler(YES);}];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {certificateHandler(NO);}];
+
+    [alert addAction:pairAction];
+    [alert addAction:cancelAction];
+    
+    [self.browser presentViewController:alert animated:YES completion:nil];
 }
 
 @end

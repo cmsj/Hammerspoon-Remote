@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.appDelegate.firstViewController = self;
     
     [self.appDelegate.remoteHandler setupPeerWithDisplayName:[UIDevice currentDevice].name];
     [self.appDelegate.remoteHandler setupSession];

@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "HSRemoteHandler.h"
 
+@class HSRemoteHandler;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) HSRemoteHandler *remoteHandler;
+
+@property (nonatomic, retain) IBOutlet UIViewController *firstViewController;
 
 @end
 

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+@class AppDelegate;
+
 @interface FirstViewController : UIViewController <MCBrowserViewControllerDelegate>
 @property (strong, nonatomic) AppDelegate *appDelegate;
 
