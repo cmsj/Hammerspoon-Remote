@@ -17,6 +17,7 @@
 		4F9204801B6180B8002FBC48 /* Hammerspoon_RemoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92047F1B6180B8002FBC48 /* Hammerspoon_RemoteTests.m */; };
 		4F92048E1B61810D002FBC48 /* HSRemoteHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F92048D1B61810D002FBC48 /* HSRemoteHandler.m */; };
 		4FBE04B41B680E64003A610A /* MYAnonymousIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE04B31B680E64003A610A /* MYAnonymousIdentity.m */; };
+		4FBE04B71B689B18003A610A /* HSRemoteTrustStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE04B61B689B18003A610A /* HSRemoteTrustStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		4FBE04B11B680E64003A610A /* HammerspoonRemoteCertTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerspoonRemoteCertTemplate.h; sourceTree = "<group>"; };
 		4FBE04B21B680E64003A610A /* MYAnonymousIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYAnonymousIdentity.h; sourceTree = "<group>"; };
 		4FBE04B31B680E64003A610A /* MYAnonymousIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYAnonymousIdentity.m; sourceTree = "<group>"; };
+		4FBE04B51B689B18003A610A /* HSRemoteTrustStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSRemoteTrustStore.h; sourceTree = "<group>"; };
+		4FBE04B61B689B18003A610A /* HSRemoteTrustStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSRemoteTrustStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				4F9204651B6180B7002FBC48 /* AppDelegate.m */,
 				4F9204671B6180B7002FBC48 /* FirstViewController.h */,
 				4F9204681B6180B7002FBC48 /* FirstViewController.m */,
+				4FBE04B51B689B18003A610A /* HSRemoteTrustStore.h */,
+				4FBE04B61B689B18003A610A /* HSRemoteTrustStore.m */,
 				4F92046A1B6180B7002FBC48 /* SecondViewController.h */,
 				4F92046B1B6180B7002FBC48 /* SecondViewController.m */,
 				4F92046D1B6180B7002FBC48 /* Main.storyboard */,
@@ -241,6 +246,7 @@
 				4F9204661B6180B7002FBC48 /* AppDelegate.m in Sources */,
 				4F9204691B6180B7002FBC48 /* FirstViewController.m in Sources */,
 				4F9204631B6180B7002FBC48 /* main.m in Sources */,
+				4FBE04B71B689B18003A610A /* HSRemoteTrustStore.m in Sources */,
 				4FBE04B41B680E64003A610A /* MYAnonymousIdentity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
